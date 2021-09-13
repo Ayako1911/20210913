@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>COACHTECH</title>
+  <link href="{{asset('/resources/css/reset.css')}}" rel="stylesheet">
+  <link  href="{{asset('/resources/css/style.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -55,10 +57,9 @@
               </form>
             <!--削除-->
               <td>
-              <form action="/todo/delete" method="POST">
-                <input type="hidden" name="id",value="{{$item->id}}">
+              <form action="/todo/delete" method="post">
+                <input type="hidden" name="id" value="{{$item->id}}">
                 @csrf
-                @method('delete')
                 <button class="button-delete">削除</button>
               </form>
             </td>
