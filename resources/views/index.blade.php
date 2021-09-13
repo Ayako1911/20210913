@@ -37,23 +37,28 @@
           </tr>
           @foreach ($items as $item)
           <tr>
+            <!-- 作成日 -->
             <td>
               {{$item->created_at}}
             </td>
-              <form action="" method="post">
+            <!--タスク名-->
+              <form action="/todo/update" method="post">
                @csrf
-                <input type="hidden" name="_token" value="">
-                <td>
-                  <input type="text" class="input-update" value="a" name="content" />
+               <td>
+                <input type="text" class= "input-update" value="{{$item->content}}" name="content"/>
+                  <input type="hidden" value="{{$item->id}}" name="id" />
                 </td>
+                <!--更新ボタン-->
                 <td>
                   <button class="button-update">更新</button>
                 </td>
               </form>
-            <td>
+            <!--削除-->
+              <td>
               <form action="/todo/delete" method="POST">
-                <input type="hidden" name="_token" value="$item->id">
+                <input type="hidden" name="id",value="{{$item->id}}">
                 @csrf
+                @method('delete')
                 <button class="button-delete">削除</button>
               </form>
             </td>

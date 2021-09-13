@@ -39,8 +39,8 @@ class TodoController extends Controller
     public function delete(Request $request)
     {
         //↓で書くとエラー画面は表示されませんが、削除機能が動きません。教材のクリエビルダのデータ削除のコードを参考に書きました。
-        $param = ['id' => $request->id];
-        DB::table('to_dos')->where('id', $request->id)->delete();
+        //$param = ['id' => $request->id];
+        //DB::table('to_dos')->where('id', //$request->id)->delete();
 
         //↓で書くと「Call to a member function delete() on null」というエラーメッセージが表示されます。
         $item = ToDo::find($request->id)->delete();
